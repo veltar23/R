@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "rm(list = ls(all = TRUE))\nlibrary(png)\nlibrary(animation)\n\nrawData = read.csv('1.CSV', header = TRUE)\n\nfor(yid in c(1:length(rawData[,1])))\n{\n  barplot(as.matrix(rawData[yid,c(-1,-2)]),\n          main = paste0(\"國立台灣大學\",\n                        rawData[yid,1],\n                        \"年總計\",\n                        rawData[yid,2],\n                        \"人\")\n  )\n}\n\n\n",
+    "created" : 1488333272908.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2968978651",
+    "id" : "C0029BE8",
+    "lastKnownWriteTime" : 1488337573,
+    "last_content_update" : 1488337668594,
+    "path" : "~/R/R/hw1 ntu student/111.R",
+    "project_path" : "111.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

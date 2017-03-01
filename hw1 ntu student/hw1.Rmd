@@ -1,0 +1,46 @@
+---
+title: "hw1_ntu students"
+author: "r05741051_黃羽均"
+date: "2017年3月1日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+緣起
+資料來源
+
+
+
+```{r}
+rawData = read.csv('1.CSV', header = TRUE)
+
+for(yid in c(1:length(rawData[,1])))
+{
+  barplot(as.matrix(rawData[yid,c(-1,-2)]),
+          main = paste0("國立台灣大學",
+                        rawData[yid,1],
+                        "年總計",
+                        rawData[yid,2],
+                        "人")
+  )
+}
+```
+
+說明文字
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
