@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "rm(list=ls(all.names=TRUE))\nlibrary(XML)\nlibrary(RCurl)\nlibrary(httr)\n\nurlPath <- \"https://cafenomad.tw/taipei/listl\"\ntemp    <- getURL(urlPath, encoding = \"big5\")\nxmldoc  <- htmlParse(temp)\ntitle   <- xpathSApply(xmldoc, \"//td[1]/text()\", xmlValue)\ntitle   <- gsub(\"\\n\", \"\", title)\ntitle   <- gsub(\"\\t\", \"\", title)\nwifi    <- xpathSApply(xmldoc, \"//td[2]\", xmlValue)\nseat    <- xpathSApply(xmldoc, \"//td[3]\", xmlValue)\nquiet   <- xpathSApply(xmldoc, \"//td[4]\", xmlValue)\nprice   <- xpathSApply(xmldoc, \"//td[7]\", xmlValue)\nmptyId <- which(title ==\"(本文已被刪除) [brukling]\")\n#empty <- author==\"-\"\n#author = author[!empty]\nauthor = author[-emptyId]\ndate = date[-emptyId]\nresponse = response[-emptyId]\ntitle = title[-emptyId]\nalldata <- data.frame(title, author, path, date, response)\n\nwrite.table(alldata,\"pttmovie.csv\") #你會在此Script資料夾下得到一個.csv",
+    "created" : 1490154628081.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "3850513288",
+    "id" : "D0C820C5",
+    "lastKnownWriteTime" : 5292976843906638626,
+    "last_content_update" : 1490326655074,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
