@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "rm(list=ls(all.names=TRUE))\nlibrary(XML)\nlibrary(RCurl)\nlibrary(httr)\n\nurlPath <- \"https://www.ptt.cc/bbs/Bio-Job/index.html\"\ntemp    <- getURL(urlPath, encoding = \"UTF-8\")\nxmldoc  <- htmlParse(temp)\ntitle   <- xpathSApply(xmldoc, \"//div[@class=\\\"title\\\"]\", xmlValue)\ntitle   <- gsub(\"\\n\", \"\", title)\ntitle   <- gsub(\"\\t\", \"\", title)\nauthor  <- xpathSApply(xmldoc, \"//div[@class='author']\", xmlValue)\ndate    <- xpathSApply(xmldoc, \"//div[@class='date']\", xmlValue)\nresponse<- xpathSApply(xmldoc, \"//div[@class='nrec']\", xmlValue)\n\nalldata <- data.frame(title, author, date, response)\n\nwrite.table(alldata,\"biojob.csv\") #你會在此Script資料夾下得到一個.csv\n",
+    "created" : 1490610163148.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "3895033360",
+    "id" : "B12F7CDC",
+    "lastKnownWriteTime" : 929887288899403776,
+    "last_content_update" : 1490763931172,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

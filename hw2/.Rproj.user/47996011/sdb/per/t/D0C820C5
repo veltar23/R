@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "rm(list=ls(all.names=TRUE))\nlibrary(XML)\nlibrary(RCurl)\nlibrary(httr)\nurlPath <- \"https://www.ptt.cc/bbs/Bio-Job/index.html\"\ntemp    <- getURL(urlPath, encoding = \"big5\")\nxmldoc  <- htmlParse(temp)\ntitle   <- xpathSApply(xmldoc, \"//div[@class=\\\"title\\\"]\", xmlValue)\ntitle   <- gsub(\"\\n\", \"\", title)\ntitle   <- gsub(\"\\t\", \"\", title)\nauthor  <- xpathSApply(xmldoc, \"//div[@class='author']\", xmlValue)\npath    <- xpathSApply(xmldoc, \"//div[@class='title']/a//@href\")\ndate    <- xpathSApply(xmldoc, \"//div[@class='date']\", xmlValue)\nresponse<- xpathSApply(xmldoc, \"//div[@class='nrec']\", xmlValue)\nemptyId <- which(title ==\"(本文已被刪除) [brukling]\")\n#empty <- author==\"-\"\n#author = author[!empty]\nauthor = author[-emptyId]\ndate = date[-emptyId]\nresponse = response[-emptyId]\ntitle = title[-emptyId]\nalldata <- data.frame(title, author, path, date, response)\n\nwrite.table(alldata,\"biojob.csv\") #你會在此Script資料夾下得到一個.csv",
+    "created" : 1490154628081.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3321968611",
+    "id" : "D0C820C5",
+    "lastKnownWriteTime" : 1490666468,
+    "last_content_update" : 1490666468804,
+    "path" : "C:/Users/user/Dropbox/R/R/hw2/hw2.R",
+    "project_path" : "hw2.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
