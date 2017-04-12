@@ -1,3 +1,13 @@
+---
+title: "hw2_elderly"
+author: "r05741051_黃羽均"
+date: "2017年4月12日"
+output: html_document
+---
+PTT elderly版 資料爬蟲
+資料來源 ：PTT https://www.ptt.cc/bbs/elderly/index.html
+
+```{r}
 rm(list=ls(all.names=TRUE))
 library(XML)
 library(RCurl)
@@ -13,8 +23,14 @@ response<- xpathSApply(xmldoc, "//div[@class='nrec']", xmlValue)
 
 alldata <- data.frame(title, author, date, response)
 
-write.table(alldata,"pttelderly.csv") #你會在此Script資料夾下得到一個.csv
+write.table(alldata,"pttelderly.csv") 
+
+```
+
+```{r}
 
 library(knitr)
 data=read.table("pttelderly.csv")
 kable(data)
+```
+
