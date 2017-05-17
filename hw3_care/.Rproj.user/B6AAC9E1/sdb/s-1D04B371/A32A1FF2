@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(ggplot2)\n\nrdata<-read.csv(\"1.csv\",header = TRUE)\n\nplot(rdata$Year,rdata$Total,,ylim = c(0,22000))\nlines(rdata$Year,rdata$Administrators,col=\"red\")\nlines(rdata$Year,rdata$Nursing.Staff,col=\"blue\")\nlines(rdata$Year,rdata$Social.Workers,col=\"green\")\nlines(rdata$Year,rdata$Serviceman,col=\"yellow\")\n\ngdata<-read.csv(\"2.csv\",header = TRUE)\n\nvect<-c(-0.1,0.4)\n\nplot(gdata$Year,gdata$Total, ,ylim = vect)\nlines(gdata$Year,gdata$Administrators,col=\"red\")\nlines(gdata$Year,gdata$Nursing.Staff,col=\"blue\")\nlines(gdata$Year,gdata$Social.Workers,col=\"green\")\nlines(gdata$Year,gdata$Serviceman,col=\"yellow\")\n\nm<-data.frame(mean(gdata$Total),\n              mean(gdata$Administrators),\n              mean(gdata$Nursing.Staff),\n              mean(gdata$Social.Workers),\n              mean(gdata$Serviceman))\n\n\nprint(mean(gdata$Total))\nprint(mean(gdata$Administrators))\nprint(mean)\n\nn1<-cor(gdata$Nursing.Staff,gdata$Total)\nn2<-cor(gdata$Nursing.Staff,gdata$Administrators)\nn3<-cor(gdata$Nursing.Staff,gdata$Social.Workers)\nn4<-cor(gdata$Nursing.Staff,gdata$Serviceman)\nnn<-data.frame(n1,n2,n3,n4)\nprint(nn)",
+    "created" : 1494977663219.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1733977848",
+    "id" : "A32A1FF2",
+    "lastKnownWriteTime" : 3419473789575321445,
+    "last_content_update" : 1494983787705,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
