@@ -34,7 +34,7 @@ newTable = newTable[with(newTable, order(pos)),]
 rownames(newTable) <- 1:nrow(newTable)
 
 p <- plot_ly(data = newTable, x = ~year, 
-             y = ~people, color = ~pos) %>%
+             y = ~people, color = ~pos, mode='lines') %>%
      add_lines( yaxis = list(range = c(0,10)))
 p
 htmlwidgets::saveWidget(p, "index.html")
