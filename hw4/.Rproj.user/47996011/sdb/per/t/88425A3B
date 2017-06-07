@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1495558015593.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "88425A3B",
+    "lastKnownWriteTime" : 0,
+    "last_content_update" : 1495558015593,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "7A9F6E63",
+        "caption" : "redata",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=redata&cache_key=7A9F6E63",
+        "displayedObservations" : 22,
+        "environment" : "",
+        "object" : "redata",
+        "preview" : 0,
+        "totalObservations" : 22,
+        "variables" : 17
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

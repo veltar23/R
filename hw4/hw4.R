@@ -32,3 +32,5 @@ P <- plot_ly(NewTable, x = ~Year,
 
 P
 htmlwidgets::saveWidget(P, "1.html")
+
+ggplot2(NewTable)
