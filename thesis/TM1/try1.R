@@ -6,8 +6,8 @@ library(tmcn)
 library(Rwordseg)
 library(jiebaR)
 library(rJava)
-library(SnowballC)
-library(slam)
+library(SnowballC) # 似乎是上面某個套件的輔助
+library(slam)  # 似乎是上面某個套件的輔助
 
 
 #2.get data
@@ -23,15 +23,18 @@ mycorpus <- tm_map(mycorpus, function(word) {
 
 #3.斷詞
 
-mycorpus1 <- tm_map(mycorpus, segmentCN, nature = TRUE)
-mycorpus2 <- Corpus(VectorSource(mycorpus1))
+mycorpus1 <- tm_map(mycorpus, segmentCN, nature = TRUE) 
+#主要是這邊會出現error
+#Error in get("Analyzer", envir = .RwordsegEnv) : object '.RwordsegEnv' not found
+#好像打開後第一次切不會error 後來每一次都會
+mycorpus2 <- Corpus(VectorSource(mycorpus1)) 
 
 
  c<-data.frame(text = sapply(mycorpus2, as.character), stringsAsFactors = FALSE)
- write.table(c,file="data2")
+ write.table(c,file="data2") #匯出檔案方便確認結果
 
 #4.停止詞
-myStopWords <- c(toTrad(stopwordsCN()),"不受")
+myStopWords <- c(toTrad(stopwordsCN()),"一下")
 mycorpus3 <- tm_map(mycorpus2, removeWords, myStopWords)
 
 c<-data.frame(text = sapply(mycorpus3, as.character), stringsAsFactors = FALSE)

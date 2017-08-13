@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "rm(list=ls(all.names = TRUE))\n\n#1.library\nlibrary(tm)\nlibrary(tmcn)\nlibrary(Rwordseg)\nlibrary(jiebaR)\nlibrary(rJava)\nlibrary(SnowballC)\nlibrary(slam)\n\n\n#2.get data\nm<-\"C:/Users/ASUS/Dropbox/R/R/thesis/TM1\" #檔案路徑  \nmycorpus <- Corpus(DirSource(m),list(language = NA)) #讀取路徑下所有txt\n\nmycorpus <- tm_map(mycorpus, removePunctuation)\nmycorpus <- tm_map(mycorpus, stripWhitespace)\nmycorpus <- tm_map(mycorpus, removeNumbers)\nmycorpus <- tm_map(mycorpus, function(word) {\n  gsub(\"[A-Za-z0-9]\", \"\", word)\n})\n\n#3.斷詞\n\nmycorpus1 <- tm_map(mycorpus, segmentCN, nature = TRUE)\nmycorpus2 <- Corpus(VectorSource(mycorpus1))\n\n\n c<-data.frame(text = sapply(mycorpus2, as.character), stringsAsFactors = FALSE)\n write.table(c,file=\"data2\")\n\n#4.停止詞\nmyStopWords <- c(toTrad(stopwordsCN()),\"不受\")\nmycorpus3 <- tm_map(mycorpus2, removeWords, myStopWords)\n\nc<-data.frame(text = sapply(mycorpus3, as.character), stringsAsFactors = FALSE)\nwrite.table(c,file=\"data2X\")\n",
+    "created" : 1502636956915.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3540493183",
+    "id" : "B770D474",
+    "lastKnownWriteTime" : 1502637055,
+    "last_content_update" : 1502637055357,
+    "path" : "C:/Users/ASUS/Dropbox/R/R/thesis/TM1/try1.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
