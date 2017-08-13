@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "rm(list=ls(all.names = TRUE))\n\n#1\nlibrary(tm)\nlibrary(tmcn)\n\n\n#2\ngetwd()\nsetwd(\"C:/Users/user/Dropbox/R/R/data mining\")\nd.corpus <- Corpus(DirSource(), list(language = NA))\n\n\n#3\nd.corpus <- tm_map(d.corpus, removePunctuation)\nd.corpus <- tm_map(d.corpus, removeNumbers)\nd.corpus <- tm_map(d.corpus, function(word) {\n  gsub(\"[A-Za-z0-9]\", \"\", word)\n})\n\n\n# 4. change...\nd.corpus <- tm_map( d.corpus, PlainTextDocument ) # to plain text doc\nlength(d.corpus)\nd.corpus <- paste0(d.corpus[[1]]$content,collapse = \"\") # to string\nlength(d.corpus)\n\n# 5.Chinese text segmentation\ncut <- worker() # set segmentation worker\ncut_d.corpus <- cut[d.corpus] # segmentation\n\ncut_d.corpus_tab = table( cut_d.corpus )\nwrite.table(cut_d.corpus_tab)\nwrite.table(cut_d.corpus_tab, file=\"C:/Users/user/Dropbox/R/R/data mining/datac1\")\n\n#6\nStopWords <- toTrad(stopwordsCN())\nStopWords <- cut[StopWords] # segmentation\nmyStopWords <- c(StopWords)\n\na<- list()\nfor (i in seq_along(StopWords)) {\n  a[i] <- gettext(StopWords[[i]][[1]]) #Do not use $content here!\n}\n\ndf$text <- unlist(a) \nStopWords <- StopWords(VectorSource(df$text)) #This action restores the corpus.\n\n\n\nd.corpus <- tm_map(d.corpus, removeWords, myStopWords)\n",
+    "created" : 1502455558727.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "669663336",
+    "id" : "F74203FF",
+    "lastKnownWriteTime" : 1502234936,
+    "last_content_update" : 1502234936,
+    "path" : "C:/Users/user/Dropbox/R/R/thesis/data mining/new1.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
